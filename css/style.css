@@ -22,7 +22,7 @@
   --around-buttons:rgb(236, 234, 234);
    --center-buttons: rgb(254, 249, 249);
    --hover-buttons:rgb(166, 165, 165);
-   --MC-MR:rgb(125, 124, 124);
+   --MC-MR: rgb(211, 211, 211) ;
    --gap:rgb(211, 211, 211);
    --border-radius: 0;
    --border-top-right-radius:0;
@@ -34,7 +34,7 @@
    --around-buttons:rgb(130,217,61);
    --center-buttons: rgb(177,238,72);
    --hover-buttons:rgb(79,169,62);
-   --MC-MR: rgb(3, 3, 3) ;
+   --MC-MR: rgb(214,241,124) ;
    --gap:rgb(214,241,124);
    --border-radius: 30px;
    --border-top-right-radius:30px;
@@ -46,7 +46,7 @@
    --around-buttons:  rgb(86,202,239);
    --center-buttons: rgb(136,218,240);
    --hover-buttons:  rgb(0,109,188);
-   --MC-MR: rgb(3, 3, 3) ;
+   --MC-MR: rgb(199,237,250) ;
    --gap:rgb(199,237,250);
    --border-radius: 0;
    --border-top-right-radius:30px ;
@@ -58,7 +58,7 @@
    --around-buttons: #C147E9 ;
    --center-buttons: #BA94D1;
    --hover-buttons: #810CA8;
-   --MC-MR: rgb(3, 3, 3) ;
+   --MC-MR: #DEBACE ;
    --gap:#DEBACE;
    --border-radius: 150%;
    --border-top-right-radius:50px;
@@ -123,6 +123,29 @@ html {
 .close-icon:hover {
   background-color: rgb(233, 58, 58);
   cursor: pointer;
+}
+
+.flex-memory {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.memory-container:hover{
+  background-color: var(--hover-buttons);
+}
+
+.memory-container {
+  position: relative;
+  width: 100%;
+  height: 15%;
+}
+
+.memory-paragraph {
+  font-size: 32px;
+  position: absolute;
+  right: 30px;
+  font-family: number-font;
 }
 
 .result {
@@ -205,18 +228,32 @@ html {
   height: 30px;
 }
 
+.memory-function {
+  position: absolute;
+  width:0;
+  height: 90%;
+  background-color:  var(--container);
+}
+
+.p-memory-function {
+ font-family: number-font;
+ font-size: 12px;
+ padding-top: 17px;
+}
+
 .zero {
   font-weight: bold;
   align-self: flex-end;
   margin-bottom: 20px;
   margin-right: 4px;
   font-size: 40px;
+  font-family: number-font;
+  margin-right: 20px;
 }
 
-.MC-MR {
-  background-color: var(--container);
-  color: var(--MC-MR);
+.MC-MR { 
   font-weight: bold;
+  background-color: var(--MC-MR);
 }
 
 .m-buttons {
@@ -230,6 +267,12 @@ html {
   border-radius: var(--border-radius);
   border-top-right-radius:var(--border-top-right-radius);
   border-bottom-left-radius: var(--border-bottom-left-radius);
+}
+
+.position-Mbuttons {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
 }
 
 .history:hover {
@@ -246,14 +289,71 @@ html {
   display: flex;
   flex-flow: row nowrap;
   gap: 20px;
+  padding: 10px;
 }
 
 .history-box {
   background-color: var(--container);
   grid-area: history-box;
+  overflow: auto;
 }
 
-.sentence {
+.container-history {
+  width: 100%;
+  height: 100%;
+}
+
+.trash-div {
+  display: none;
+}
+
+.trash {
+  position: fixed;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background-color: var(--container);
+}
+
+.trash:hover{
+ background-color: var(--hover-buttons);
+}
+
+.trash img {
+  width: 25px;
+  height: 25px;
+}
+
+.div-history {
+  width: 100%;
+  height: 100px;
+  background-color: var(--);
+}
+
+.div-history:hover {
+  background-color: var(--hover-buttons);
+}
+.paraghraph-bottom {
+  text-align: right;
+  font-size: 25px;
+  padding-right: 10px;
+  font-family: number-font;
+}
+
+.paraghraph-top {
+  text-align: right;
+  padding: 10px;
+  font-family: number-font;
+}
+
+.sentence, .paraghraph-history {
   padding-top: 14px;
   font-family: number-font;
   font-size: 0.7rem;
@@ -264,13 +364,27 @@ html {
   font-family: number-font;
   font-size: 0.8rem;
   border: none;
-  margin: 10px 30px 7px 10px;
   background-color: var(--container);
+  border-bottom:3px solid orange;
 }
 
 .p-history {
   border-bottom: 4px solid orange;
   padding: 3px;
+}
+
+.box-memory {
+  display: flex;
+  height: 40%;
+  width: auto;
+  position: absolute;
+  right: 30px;
+  bottom: 0;
+}
+
+.box-memory button {
+  width: 30px;
+  height: 30px;
 }
 
 .memory {
@@ -282,6 +396,12 @@ html {
   font-family: number-font;
   font-size: 0.8rem;
   border: none;
+}
+
+.result-top {
+  margin-right: 20px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .buttons {
@@ -306,6 +426,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
 
 .numbers {
@@ -337,6 +458,7 @@ html {
 }
 
 .text-buttons {
+  pointer-events: none;
   font-size: 20px;
   font-family: all-font;
   font-weight: bold;
@@ -514,3 +636,6 @@ responsive */
   }
 }
 
+img {
+  pointer-events: none;
+}
